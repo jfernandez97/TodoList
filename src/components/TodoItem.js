@@ -31,5 +31,6 @@ const styles = StyleSheet.create({
   },
   itemText: {
     flex: 1,
+    fontFamily: "NunitoRegular",
   },
 });
