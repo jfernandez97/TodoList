@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import AppLoading from "expo-app-loading";
 import Navigator from "./src/navigation/Navigator";
+import { Provider } from "react-redux";
 import { StyleSheet } from "react-native";
-import Tasks from "./src/screens/Tasks";
+import store from "./app/store";
 import { useFonts } from "expo-font";
 
 export default function App() {
@@ -16,7 +17,11 @@ export default function App() {
 
   if (!loaded) return <AppLoading />;
 
-  return <Navigator />;
+  return (
+    <Provider store={store}>
+      <Navigator />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({});

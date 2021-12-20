@@ -9,6 +9,8 @@ import {
   View,
 } from "react-native";
 import React, { useState } from "react";
+import { addTask, completeTask } from "../../features/tasks/tasksSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import AddTodo from "../components/AddTodo";
 import { Colors } from "../Constants/Colors";
@@ -16,19 +18,14 @@ import Header from "../components/Header";
 import TodoItem from "../components/TodoItem";
 
 export default function Tasks({ navigation }) {
-  const [taskItems, setTaskItems] = useState([]);
+  // const [taskItems, setTaskItems] = useState([]);
+  const taskItems = useSelector((state) => state.tasks);
 
-  const completeHandler = (key) => {
-    setTaskItems((prevTasks) => {
-      return prevTasks.filter((task) => task.key != key);
-    });
-  };
+  const dispatch = useDispatch();
 
   const submitHandler = (text) => {
     if (text.length > 1) {
-      setTaskItems((prevTasks) => {
-        return [{ text: text, key: Math.random().toString() }, ...prevTasks];
-      });
+      dispatch(addTask({ text, key: Math.random().toString() }));
     } else {
       Alert.alert("OUCH!", "Tasks cannot be empty!", [{ text: "Okey!" }]);
     }
@@ -47,9 +44,7 @@ export default function Tasks({ navigation }) {
           <View style={styles.list}>
             <FlatList
               data={taskItems}
-              renderItem={({ item }) => (
-                <TodoItem item={item} completeHandler={completeHandler} />
-              )}
+              renderItem={({ item }) => <TodoItem item={item} />}
             ></FlatList>
           </View>
           <Button

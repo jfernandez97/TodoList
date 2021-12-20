@@ -1,11 +1,21 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
+import { completeTask } from "../../features/tasks/tasksSlice";
 
-export default function TodoItem({ item, completeHandler }) {
+export default function TodoItem({ item }) {
+  const taskItems = useSelector((state) => state.tasks);
+
+  const dispatch = useDispatch();
+
+  const completeHandler = (item) => {
+    dispatch(completeTask(item));
+  };
+
   return (
-    <TouchableOpacity onPress={() => completeHandler(item.key)}>
+    <TouchableOpacity onPress={() => completeHandler(item)}>
       <View style={styles.item}>
         <View style={styles.itemLeft}>
           <View style={styles.square} />
