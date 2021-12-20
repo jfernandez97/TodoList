@@ -3,6 +3,7 @@ import {
   Button,
   FlatList,
   Keyboard,
+  KeyboardAvoidingView,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
@@ -40,7 +41,7 @@ export default function Tasks({ navigation }) {
       }}
     >
       <View style={styles.container}>
-        <Header />
+        {/* <Header /> */}
         <View style={styles.content}>
           <AddTodo submitHandler={submitHandler} />
           <View style={styles.list}>
@@ -52,6 +53,7 @@ export default function Tasks({ navigation }) {
             ></FlatList>
           </View>
           <Button
+            style={styles.goBackButton}
             onPress={() => {
               navigation.navigate("Home");
             }}
@@ -66,14 +68,18 @@ export default function Tasks({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
   },
   content: {
     flex: 1,
-    padding: 40,
+    padding: 20,
+    backgroundColor: "#E8EAED",
   },
   list: {
     flex: 1,
-    marginTop: 20,
+    marginTop: 5,
+  },
+  goBackButton: {
+    flex: 1,
+    marginTop: 10,
   },
 });

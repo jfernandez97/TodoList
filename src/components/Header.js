@@ -6,7 +6,7 @@ import React from "react";
 export default function Header() {
   return (
     <View style={styles.header}>
-      <Text style={styles.title}>My tasks..</Text>
+      <Text style={styles.title}>To do list</Text>
     </View>
   );
 }

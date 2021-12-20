@@ -1,4 +1,12 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useState } from "react";
 
 import { Colors } from "../Constants/Colors";
@@ -10,23 +18,29 @@ export default function AddTodo({ submitHandler }) {
     setText(val);
   };
   return (
-    <View>
+    <KeyboardAvoidingView style={styles.writeTaskWrapper}>
       <TextInput
         style={styles.input}
-        placeholder="new Task..."
+        placeholder="Write a new Task..."
         value={text}
         onChangeText={changeHandler}
       ></TextInput>
-      <Button
-        onPress={() => submitHandler(text)}
-        title="Add Task"
-        color={Colors.primary}
-      />
-    </View>
+      <TouchableOpacity onPress={() => submitHandler(text)}>
+        <View style={styles.addWrapper}>
+          <Text>+</Text>
+        </View>
+      </TouchableOpacity>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  writeTaskWrapper: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignContent: "center",
+    marginHorizontal: 6,
+  },
   input: {
     marginBottom: 10,
     paddingHorizontal: 8,
@@ -36,7 +50,19 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderColor: "#C0C0C0",
     borderWidth: 1,
-    width: 315,
+    width: 280,
+    backgroundColor: "#FFF",
     fontFamily: "robotoCondensedBold",
+  },
+  addWrapper: {
+    width: 42,
+    height: 42,
+    backgroundColor: "#FFF",
+    borderRadius: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#C0C0C0",
+    borderWidth: 1,
+    marginRight: 2,
   },
 });
