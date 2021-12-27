@@ -4,7 +4,7 @@ import AppLoading from "expo-app-loading";
 import Navigator from "./src/navigation/Navigator";
 import { Provider } from "react-redux";
 import { StyleSheet } from "react-native";
-import store from "./app/store";
+import store from "./store";
 import { useFonts } from "expo-font";
 
 export default function App() {

@@ -3,19 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { completeTask } from "../../features/tasks/tasksSlice";
+import { completeTask } from "../../store/actions/tasks.actions";
 
 export default function TodoItem({ item }) {
-  const taskItems = useSelector((state) => state.tasks);
-
   const dispatch = useDispatch();
 
-  const completeHandler = (item) => {
-    dispatch(completeTask(item));
+  const completeHandler = (id) => {
+    dispatch(completeTask(id));
   };
 
   return (
-    <TouchableOpacity onPress={() => completeHandler(item)}>
+    <TouchableOpacity onPress={() => completeHandler(item.key)}>
       <View style={styles.item}>
         <View style={styles.itemLeft}>
           <View style={styles.square} />
