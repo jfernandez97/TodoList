@@ -19,17 +19,25 @@ export default function Home({ navigation }) {
       }}
     >
       <View style={styles.container}>
-        {/* <TextInput
+        <Text style={styles.title}>Crear nota</Text>
+        <TextInput
           style={styles.input}
           placeholder="Write a new Note..."
           onChangeText={() => {}}
-        ></TextInput> */}
-        <View style={styles.createButton}>
+        ></TextInput>
+        <View style={styles.saveButton}>
           <Button
-            title="Create a note"
+            title="Save a note"
+            onPress={() => {}}
+            color={Colors.primary}
+          />
+        </View>
+        <View style={styles.goBackButton}>
+          <Button
             onPress={() => {
-              navigation.navigate("CreateNoteStack");
+              navigation.navigate("NotesStack");
             }}
+            title="Go back"
             color={Colors.primary}
           />
         </View>
@@ -41,6 +49,11 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  title: {
+    fontFamily: "NunitoBold",
+    fontSize: 20,
+    margin: 10,
   },
   input: {
     margin: 10,
@@ -54,8 +67,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     fontFamily: "robotoCondensedBold",
   },
-  createButton: {
+  saveButton: {
+    position: "absolute",
+    bottom: 60,
     marginHorizontal: 15,
-    marginTop: 20,
+    width: "92%",
+  },
+  goBackButton: {
+    position: "absolute",
+    bottom: 10,
+    marginHorizontal: 15,
+    width: "92%",
   },
 });

@@ -19,6 +19,7 @@ import TodoItem from "../components/TodoItem";
 
 export default function Tasks({ navigation }) {
   // const [taskItems, setTaskItems] = useState([]);
+
   const taskItems = useSelector((state) => state.tasks);
 
   const dispatch = useDispatch();
@@ -72,9 +73,5 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     marginTop: 5,
-  },
-  goBackButton: {
-    flex: 1,
-    marginTop: 10,
   },
 });

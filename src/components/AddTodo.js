@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Colors } from "../Constants/Colors";
 
@@ -16,6 +16,9 @@ export default function AddTodo({ submitHandler }) {
 
   const changeHandler = (val) => {
     setText(val);
+  };
+  const clearText = () => {
+    setText("");
   };
   return (
     <KeyboardAvoidingView style={styles.writeTaskWrapper}>
