@@ -17,9 +17,6 @@ export default function AddTodo({ submitHandler }) {
   const changeHandler = (val) => {
     setText(val);
   };
-  const clearText = () => {
-    setText("");
-  };
   return (
     <KeyboardAvoidingView style={styles.writeTaskWrapper}>
       <TextInput

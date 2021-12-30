@@ -3,7 +3,6 @@ import {
   Button,
   FlatList,
   Keyboard,
-  KeyboardAvoidingView,
   StyleSheet,
   TouchableWithoutFeedback,
   View,
@@ -13,13 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import AddTodo from "../components/AddTodo";
 import { Colors } from "../Constants/Colors";
-import Header from "../components/Header";
 import TodoItem from "../components/TodoItem";
 import { addTask } from "../../store/actions/tasks.actions";
 
 export default function Tasks({ navigation }) {
-  // const [taskItems, setTaskItems] = useState([]);
-
   const { tasks } = useSelector((state) => state.tasks);
 
   const dispatch = useDispatch();
@@ -49,7 +45,6 @@ export default function Tasks({ navigation }) {
             ></FlatList>
           </View>
           <Button
-            style={styles.goBackButton}
             onPress={() => {
               navigation.navigate("Home");
             }}
