@@ -35,7 +35,6 @@ export default function Tasks({ navigation }) {
       }}
     >
       <View style={styles.container}>
-        {/* <Header /> */}
         <View style={styles.content}>
           <AddTodo submitHandler={submitHandler} />
           <View style={styles.list}>

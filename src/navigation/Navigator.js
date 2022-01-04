@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
+import Camera from "../screens/Camera";
 import { Colors } from "../Constants/Colors";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Home from "../screens/Home";
 import { Login } from "../screens/Login";
 import { NavigationContainer } from "@react-navigation/native";
-import NoteStackScreen from "../screens/NotesStackScreen";
 import { Register } from "../screens/Register";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import Tasks from "../screens/Tasks";
@@ -16,7 +15,6 @@ import { auth } from "../firebase/config";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
-// const Stack = createNativeStackNavigator();
 
 export default function Navigator() {
   const [user, setUser] = useState();
@@ -35,15 +33,10 @@ export default function Navigator() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setUser(user);
-        // ...
       } else {
         setUser(null);
-        // User is signed out
-        // ...
       }
     });
   }, []);
@@ -62,8 +55,8 @@ export default function Navigator() {
               iconName = "tasks";
               size = focused ? 25 : 20;
               color = focused ? Colors.primary : "#555";
-            } else if (route.name === "Notes") {
-              iconName = "sticky-note";
+            } else if (route.name === "Camera") {
+              iconName = "camera-retro";
               size = focused ? 25 : 20;
               color = focused ? Colors.primary : "#555";
             } else if (route.name === "Login") {
@@ -100,8 +93,8 @@ export default function Navigator() {
             <Tab.Screen name="Tasks" component={Tasks} />
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen
-              name="Notes"
-              component={NoteStackScreen}
+              name="Camera"
+              component={Camera}
               screenOptions={{
                 headerStyle: {
                   backgroundColor: Colors.primary,

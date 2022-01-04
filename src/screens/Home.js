@@ -17,10 +17,10 @@ export default function Home({ navigation }) {
       </View>
       <View style={styles.button2}>
         <Button
-          title="Go to notes"
+          title="Go to camera"
           color={Colors.primary}
           onPress={() => {
-            navigation.navigate("Notes");
+            navigation.navigate("Camera");
           }}
         />
       </View>

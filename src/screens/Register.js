@@ -21,13 +21,9 @@ export const Register = () => {
   const [error, setError] = useState("");
 
   const handleRegister = () => {
-    // alert(`Email: ${form.email}, password: ${form.password}`);
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-
-        //Generamos el diplayName y le asignamos el username
         updateProfile(auth.currentUser, {
           displayName: form.username,
         })
@@ -37,15 +33,12 @@ export const Register = () => {
             alert("User created!");
             setForm({ username: "", email: "", password: "", confirmPass: "" });
           });
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(error);
-        //alert(errorMessage);
         setError({ error });
-        // ..
       });
   };
   return (
